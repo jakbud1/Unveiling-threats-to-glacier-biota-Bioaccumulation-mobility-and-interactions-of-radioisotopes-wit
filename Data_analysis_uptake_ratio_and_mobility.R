@@ -22,10 +22,12 @@ ggsave("Output/Paper_6_uptake.png", height = 12, width = 16, dpi = 300, units = 
 m_up.1 <- glmmTMB(Ratio ~ Isotope + (1|Glacier),
                   data = df_up2[-c(9:16),]); summary(m_up.1)
 res_up1 <- residuals(m_up.1)
+qqnorm(res_up1); qqline(res_up1)
 
 plot(res_up1 ~ fitted(m_up.1))
 hist(res_up1)
 Anova(m_up.1, type = "II")
+
 
 ### Mobility -------------------------------------------------------------------
 df_mob <- readxl::read_xlsx("Input/mobility.xlsx", sheet = 1)
@@ -64,6 +66,7 @@ m_mob.1 <- glmmTMB(log_activity ~ Form * Isotope + (1|Glacier),
 res_mob1 <- residuals(m_mob.1)
 plot(res_mob1 ~ fitted(m_mob.1))
 hist(res_mob1)
+qqnorm(res_mob1); qqline(res_mob1)
 
 Anova(m_mob.1, type = "III")
 visreg(m_mob.1, "Form", "Isotope")
@@ -75,5 +78,6 @@ m_mob.2 <- glmmTMB(Ratio ~ Isotope + (1|Glacier),
 res_mob2 <- residuals(m_mob.2)
 plot(res_mob2 ~ fitted(m_mob.2))
 hist(res_mob2)
+qqnorm(res_mob2); qqline(res_mob2)
 
 Anova(m_mob.2, type = "II")

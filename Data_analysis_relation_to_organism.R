@@ -201,7 +201,7 @@ fviz_pca_ind(PCA_2,
              palette = c("#00AFBB", "#E7B800", "#FC4E07", "Black", "Green"),
              addEllipses = TRUE) + 
   labs(title = "PCA biplot - variation between glaciers (PC1 and PC2)", color = "Glacier", fill = "Glacier", shape = "Glacier", 
-       subtitle = "Predictors: OM, Chlorophyll, Cryoconite Volume, Cyanobacteria") + 
+       subtitle = "Predictors: OM content, Chlorophyll concentration, \n Cryoconite granule volume, Relative abundance of Cyanobacteria") + 
   theme_bw(base_size = 13) + theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5, size = 12)) + 
   scale_color_brewer(palette = "Dark2") + scale_fill_brewer(palette = "Dark2")
 ggsave("Output/Paper_2_PCA.png", height = 12, width = 16, dpi = 600, units = "cm")
